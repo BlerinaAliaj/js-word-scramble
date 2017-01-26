@@ -8,31 +8,32 @@
 
     <script>
         var WORDS     = ["booger", "apple", "hackbright", "mango"];
-        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+        // var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+        var SCRAMBLED = []
 
         var playing = true;
 
         function scrambledWord(word) {
-
-            var scrambledWord = []; //I'm initiating an empty list
+            var scrambleWord = []; //I'm initiating an empty list
             var myWord = word.split(""); //I'm creating a list or letters from the word
             var myRand; //initiating a variable myRand
             while (myWord.length > 0) {
                 // We get random number for the index of myWord list
                 myRand = Math.floor(Math.random() * myWord.length);
                 // This will take random letter in myWord and add it to scrambledWord
-                scrambledWord.push(myWord[myRand]);
+                scrambleWord.push(myWord[myRand]);
                 // This will remove the random letter from myWord
-                myWord.pop(myRand);
+                myWord.splice(myRand, 1);
             }
-
-            
-            return scrambledWord;
-            
+            return scrambleWord.join('');   
         }
 
+        for (var word of WORDS) {
+            SCRAMBLED.push(scrambledWord(word));
 
         }
+
+        alert(SCRAMBLED)
 
         while (playing) {
 
